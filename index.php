@@ -5,17 +5,17 @@ require_once 'vendor/autoload.php';
 
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-$r->get('/', 'TasksController-index');
-$r->get('/tasks', 'TasksController-index');
+$r->get('/', 'ProductController-index');
+$r->get('/tasks', 'ProductController-index');
 
 
-$r->get('/tasks/create', 'TasksController-create');
+$r->get('/tasks/create', 'ProductController-create');
 
-$r->post('/tasks', 'TasksController-store');
+$r->post('/tasks', 'ProductController-store');
 
-$r->post('/tasks/{id}', 'TasksController-delete');
+$r->post('/tasks/{id}', 'ProductController-delete');
 
-    $r->get('/tasks/{id}', 'TasksController-show');
+$r->get('/tasks/{id}', 'ProductController-show');
 
 });
 

@@ -20,7 +20,7 @@ class PDOProductStorage extends databaseConnect implements ProductStorage
             $product['id'],
             $product['name'],
             $product['amount'],
-            $product['category']
+
         );
     }
 

@@ -1,10 +1,22 @@
 <?php
 
+use App\Controllers\SignUpController;
+
+
 if(isset($_POST["submit"]))
 {
 
-    $userId = $_POST["user_name"];
+    $username = $_POST["user_name"];
     $password = $_POST["password"];
-    $passwordVerify = $_POST["password_verify"];
+    $passwordValidate = $_POST["password_validate"];
+    $email = $_POST["email"];
+
+
+    $signUp = new SignUpController($username,$email,$password, $passwordValidate);
+
+
+    $signUp->signUpUser();
+
+    header("location: /");
 
 }

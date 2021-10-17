@@ -3,6 +3,7 @@
 namespace config;
 
 use PDO;
+use PDOException;
 
 class databaseConnect
 
@@ -15,6 +16,7 @@ class databaseConnect
 
     protected function connect(): PDO
     {
+
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->database;
         $pdo = new PDO($dsn, $this->username, $this->password);
 
