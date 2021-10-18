@@ -3,25 +3,25 @@ namespace App\Controllers;
 
 
 use App\Models\Product;
-use App\Repos\PDOProductsRepo;
-use App\Repos\ProductsRepo;
+use App\ProductStorage\PDOProductStorage;
+use App\ProductStorage\ProductStorage;
 use Ramsey\Uuid\Uuid;
 
 class ProductsController
 {
 
-    private Products $productsRepository;
+    private ProductStorage $productsStorage;
 
     public function __construct()
     {
-        $this->productsRepository = new PDOProductsRepo();
+        $this->productsStorage = new PDOProductStorage();
 
     }
 
 
     public function index()
     {
-        $tasks = $this->productsRepository->getAll();
+        $tasks = $this->productsStorage->getAll();
 
         require_once 'App/Views/products/index.template.php';
     }
@@ -37,13 +37,14 @@ class ProductsController
     {
 
 
-        $task = new Product(
-            Uuid::uuid4(),
-            $_POST['product'],
-            Product::STATUS_STARTED
+        $product = new Product(
+            $_POST['car'],
+            $_POST['boat'],
+            $_POST['airplane'],
+
         );
 
-        $this->productsRepository->save($product);
+        $this->productsStorage->save($product);
 
 
         header('Location: /products');
@@ -56,10 +57,10 @@ class ProductsController
 
         if ($id == null) header('Location: /');
 
-        $task = $this->productsRepository->getOne($id);
+        $product = $this->productsStorage->getOne($id);
 
-        if ($task !== null) {
-            $this->productsRepository->delete($task);
+        if ($product !== null) {
+            $this->productsStorage->delete($product);
         }
 
         header('Location: /');
@@ -74,9 +75,9 @@ class ProductsController
 
         if ($id == null) header('Location: /');
 
-        $task = $this->productsRepository->getOne($id);
+        $product = $this->productsStorage->getOne($id);
 
-        if ($task === null) header('Location: /');
+        if ($product === null) header('Location: /');
 
         require_once 'app/Views/products/show.template.php';
     }

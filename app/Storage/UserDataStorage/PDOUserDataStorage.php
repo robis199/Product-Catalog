@@ -17,7 +17,7 @@ class PDOUserDataStorage extends databaseConnect implements UserDataStorage
 
         if(!$statement->execute(array($username, $hashedPassword, $email))) {
             $statement = null;
-            header("location: Views/user/auth.template.php?error=stmtfailed");
+            header("location: /error");
             exit();
         }
 
@@ -44,7 +44,7 @@ class PDOUserDataStorage extends databaseConnect implements UserDataStorage
 
         if($checkPassword == false) {
             $statement = null;
-            header("Location: /wrongpassword");
+            header("Location: /error");
             exit;
         }
         elseif($checkPassword == true)

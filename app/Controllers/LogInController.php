@@ -28,6 +28,7 @@ class LogInController extends PDOUserDataStorage
         }
 
         $this->getUser($this->username, $this->password);
+        require_once 'App/Views/user/login.php';
     }
 
     private function emptyField(): bool

@@ -1,5 +1,5 @@
 <?php
-namespace App\Storage;
+namespace App\ProductStorage;
 
 use App\Collections\ProductCollection;
 use App\Models\Product;

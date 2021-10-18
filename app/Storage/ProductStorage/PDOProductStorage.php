@@ -1,6 +1,6 @@
 <?php
 
-Namespace App\Storage;
+Namespace App\ProductStorage;
 
 use config\databaseConnect;
 use App\Collections\ProductCollection;
@@ -17,9 +17,9 @@ class PDOProductStorage extends databaseConnect implements ProductStorage
         $product = $stmt->fetch();
 
         return new Product(
-            $product['id'],
-            $product['name'],
-            $product['amount'],
+            $product['car'],
+            $product['boat'],
+            $product['airplane'],
 
         );
     }
@@ -35,7 +35,6 @@ class PDOProductStorage extends databaseConnect implements ProductStorage
                 $product['id'],
                 $product['name'],
                 $product['amount'],
-                $product['category']
             ));
         }
         return $collection;
@@ -46,10 +45,9 @@ class PDOProductStorage extends databaseConnect implements ProductStorage
         $sql = "INSERT INTO product (product_id, name, category, amount) VALUES (?, ?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([
-            $product->getId(),
-            $product->getName(),
-            $product->getAmount(),
-            $product->getCategory(),
+            $product->getCar(),
+            $product->getBoat(),
+            $product->getAirplane(),
 
         ]);
     }

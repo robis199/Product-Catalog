@@ -21,6 +21,11 @@ class SignUpController extends PDOUserDataStorage
         $this->passwordRepeat = $passwordRepeat;
     }
 
+    public function index()
+    {
+
+    }
+
     public function signUpUser()
     {
         if($this->emptyField() == false){
@@ -74,7 +79,7 @@ class SignUpController extends PDOUserDataStorage
         return $dataCheck;
     }
 
-    private function invalidEmail()
+    private function invalidEmail(): bool
     {
         if(!filter_var($this->email, FILTER_VALIDATE_EMAIL))
         {
@@ -87,7 +92,7 @@ class SignUpController extends PDOUserDataStorage
         return $dataCheck;
     }
 
-    private function passwordValidate()
+    private function passwordValidate(): bool
     {
         if ($this->password !== $this->passwordRepeat) {
             $dataCheck = false;
@@ -99,7 +104,7 @@ class SignUpController extends PDOUserDataStorage
     }
 
 
-    private function usernameExists()
+    private function usernameExists(): bool
     {
         if (!$this->checkUserData($this->username,$this->email)) {
             $dataCheck = false;
