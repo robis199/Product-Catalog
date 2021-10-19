@@ -17,22 +17,22 @@
     <br>
 
     <div class="form-check">
-        <input class="category" type="checkbox" value="car" id="category">
-        <label class="category" for="category">
+        <input class="category" name="category" type="checkbox" value="1" id="category">
+        <label class="category" for="car">
             Car
         </label>
     </div>
 
     <div class="form-check">
-        <input class="category" type="checkbox" value="boat" id="category">
-        <label class="category" for="category">
+        <input class="category" name="category" type="checkbox" value="1" id="category">
+        <label class="category" for="boat">
             Boat
         </label>
     </div>
 
     <div class="form-check">
-        <input class="category" type="checkbox" value="airplane" id="category">
-        <label class="category" for="category">
+        <input class="category" name="category" type="checkbox" value="1" id="category">
+        <label class="category" for="airplane">
             Airplane
         </label>
     </div>

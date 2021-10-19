@@ -1,4 +1,5 @@
 <?php require_once 'app/Views/partials/html.boilerplate.php';?>
+<?php require_once 'app/Models/Collections/ProductsCollection.php';?>
 
     <body>
     <h1>Products</h1> (<a href="/products/create">Add</a>)

@@ -18,7 +18,7 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
         $product = $stmt->fetch();
 
         return new Product(
-            $product['productId'],
+            $product['product_id'],
             $product['make'],
             $product['model'],
             $product['price'],
@@ -35,7 +35,7 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
 
         foreach ($products as $product) {
             $collection->add(new Product(
-                $product['productId'],
+                $product['product_id'],
                 $product['make'],
                 $product['model'],
                 $product['price'],
@@ -47,7 +47,7 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
 
     function save(Product $product): void
     {
-        $sql = "INSERT INTO product (product_id, make, model, price, category, created_at) VALUES (?, ?, ?, ?,?,?,?)";
+        $sql = "INSERT INTO product_transport (product_id, make, model, price, category, created_at) VALUES (?, ?, ?, ?,?,?)";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([
             $product->getProductId(),
@@ -55,12 +55,13 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
             $product->getModel(),
             $product->getPrice(),
             $product->getCategory(),
+            $product->getCreationTime()
         ]);
     }
 
     function delete(Product $product): void
     {
-        $sql = "DELETE FROM product WHERE product_id = ?";
+        $sql = "DELETE FROM product_transport WHERE product_id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$product->getProductId()]);
     }

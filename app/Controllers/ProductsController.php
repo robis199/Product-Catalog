@@ -39,13 +39,11 @@ class ProductsController
             $_POST['model'],
             $_POST['price'],
             $_POST['category'],
+            $_POST['created_at'],
         );
 
         $this->productsStorage->save($product);
 
-
-
-        header('Location: /tasks');
 
         header('Location: /products');
     }
@@ -53,11 +51,11 @@ class ProductsController
     public function delete(array $vars)
     {
 
-        $id = $vars['id'] ?? null;
+        $productId = $vars['product_id'] ?? null;
 
-        if ($id == null) header('Location: /');
+        if ($productId == null) header('Location: /');
 
-        $product = $this->productsStorage->getOne($id);
+        $product = $this->productsStorage->getOne($productId);
 
         if ($product !== null) {
             $this->productsStorage->delete($product);
@@ -71,11 +69,11 @@ class ProductsController
     {
 
 
-        $id = $vars['id'] ?? null;
+        $productId = $vars['product_id'] ?? null;
 
-        if ($id == null) header('Location: /');
+        if ($productId == null) header('Location: /');
 
-        $product = $this->productsStorage->getOne($id);
+        $product = $this->productsStorage->getOne($productId);
 
         if ($product === null) header('Location: /');
 

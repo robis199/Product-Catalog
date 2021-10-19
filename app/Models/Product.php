@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
 
-
+use Carbon\Carbon;
 class Product
 {
     private string $productId;
@@ -9,6 +9,7 @@ class Product
     private string $model;
     private string $price;
     private string $category;
+    private string $creationTime;
 
 
     public function __construct(
@@ -16,13 +17,15 @@ class Product
         string $make,
         string $model,
         string $price,
-        string $category )
+        string $category,
+       ?string $creationTime = null)
     {
         $this->productId = $productId;
         $this->make = $make;
         $this->model = $model;
         $this->price = $price;
         $this->category = $category;
+        $this->creationTime = $creationTime ?? Carbon::now();
 
     }
 
@@ -54,6 +57,11 @@ class Product
         return $this->category;
     }
 
+    public function getCreationTime()
+    {
+        return $this->creationTime;
+    }
+
 
 
     public function toArray(): array
@@ -64,6 +72,7 @@ class Product
             'model'=> $this->getModel(),
             'price'=> $this->getPrice(),
             'category'=> $this->getCategory(),
+            'time'=> $this->getCreationTime(),
         ];
     }
 }
