@@ -1,6 +1,6 @@
 <?php
 
-use App\Controllers\SignUpController;
+use App\Controllers\AuthController;
 
 
 if(isset($_POST["submit"]))
@@ -12,7 +12,7 @@ if(isset($_POST["submit"]))
     $email = $_POST["email"];
 
 
-    $signUp = new SignUpController($username,$email,$password, $passwordValidate);
+    $signUp = new AuthController($username,$email,$password, $passwordValidate);
 
 
     $signUp->signUpUser();

@@ -1,113 +1,69 @@
 <?php
 namespace App\Models;
 
-use Airplane;
-use Boat;
-use Car;
 
-final class Product
+class Product
 {
-    private Car $car;
-    private Airplane $airplane;
-    private Boat $boat;
+    private string $productId;
+    private string $make;
+    private string $model;
+    private string $price;
+    private string $category;
 
 
-    public function __construct(Car $car, Airplane $airplane, Boat $boat)
+    public function __construct(
+        string $productId,
+        string $make,
+        string $model,
+        string $price,
+        string $category )
     {
-        $this->car = $car;
-        $this->airplane = $airplane;
-        $this->boat = $boat;
+        $this->productId = $productId;
+        $this->make = $make;
+        $this->model = $model;
+        $this->price = $price;
+        $this->category = $category;
+
+    }
+
+    public function getProductId(): string
+    {
+        return $this->productId;
     }
 
 
-    public function getCar(): Car
+    public function getMake(): string
     {
-        return $this->car;
+        return $this->make;
+    }
 
-        }
-
-        public function getCarById()
-        {
-            return $this->car->getVehicleId();
-        }
-
-        public function getCarMake()
-        {
-            return $this->car->getMake();
-        }
-
-        public function getCarModel()
-        {
-            return $this->car->getModel();
-        }
-
-    public function getCarPrice()
+    public function getModel(): string
     {
-        return $this->car->getPrice();
+        return $this->model;
     }
 
 
-
-
-    public function getBoat(): Boat
+    public function getPrice(): string
     {
-        return $this->boat;
-    }
-
-    public function getBoatById()
-    {
-        return $this->boat->getVehicleId();
-    }
-
-    public function getBoatMake()
-    {
-        return $this->boat->getMake();
-    }
-
-    public function getBoatModel()
-    {
-        return $this->boat->getModel();
-    }
-
-    public function getBoatPrice()
-    {
-        return $this->boat->getPrice();
+        return $this->price;
     }
 
 
-    public function getAirplane(): Airplane
+    public function getCategory(): string
     {
-        return $this->airplane;
+        return $this->category;
     }
 
-    public function getAirplaneById()
-    {
-        return $this->airplane->getVehicleId();
-    }
 
-    public function getAirplaneMake()
-    {
-        return $this->airplane->getMake();
-    }
-
-    public function getAirplaneModel()
-    {
-        return $this->airplane->getModel();
-    }
-
-    public function getAirplanePrice()
-    {
-        return $this->airplane->getPrice();
-    }
 
     public function toArray(): array
     {
         return [
-            'vehicle_id'=> $this->getVehicleId(),
+            'product_id'=> $this->getProductId(),
             'make'=> $this->getMake(),
             'model'=> $this->getModel(),
-            'category'=> $this->getPrice(),
-
+            'price'=> $this->getPrice(),
+            'category'=> $this->getCategory(),
         ];
     }
 }

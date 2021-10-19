@@ -5,21 +5,20 @@ require_once 'vendor/autoload.php';
 
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
-$r->get('/', 'ProductController-index');
-$r->get('/products', 'ProductController-index');
+$r->get('/', 'ProductsController-index');
+$r->get('/products', 'ProductsController-index');
+$r->get('/products/create', 'ProductsController-create');
+$r->post('/products', 'ProductsController-store');
+$r->post('/products/{id}', 'ProductsController-delete');
+//edit
+$r->get('/products/{id}', 'ProductsController-show');
 
 
-$r->get('/products/create', 'ProductController-create');
 
-$r->post('/products', 'ProductController-store');
 
-$r->post('/products/{id}', 'ProductController-delete');
+$r->post('/authorization/main', 'AuthController-show');
 
-$r->get('/products/{id}', 'ProductController-show');
-
-$r->post('/authorization/main', 'SignUpController-show');
-
-$r->post('/authorization/sign-up', 'SignUpController-sign');
+$r->post('/authorization/sign-up', 'AuthController-sign');
 
 $r->get('/authorization/log-in', 'LogInController-log');
 

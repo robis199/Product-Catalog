@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4ede8648-d672-4c1f-8815-8af0c2444b5e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Config/DatabaseConnect.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/LogInController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/ProductsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/SignUpController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Collections/ProductCollection.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Collections/ProductsCollection.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductCategories/Airplane.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductCategories/Boat.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/ProductCategories/Car.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Storage/ProductStorage/PDOProductStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Storage/ProductStorage/PDOProductStorage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Storage/ProductStorage/ProductStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Storage/ProductStorage/ProductStorage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/partials/html.boilerplate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/partials/html.boilerplate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/products/create.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/create.template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/products/index.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/index.template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/products/show.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/show.template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/user/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/user/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/databaseConnect.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings" doNotAsk="true">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
+    <execution>
+      <interpreter composer="composer" />
+    </execution>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/nikic/fast-route" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1zaC8EGXkPOeHg3zdiLFezO7ytw" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Product-Catalog\app" />
+      <recent name="C:\xampp\htdocs\Product-Catalog\app\Models\ProductCategories" />
+      <recent name="C:\xampp\htdocs\Product-Catalog\app\Storage\UserDataStorage" />
+      <recent name="C:\xampp\htdocs\Product-Catalog\app\Storage\ProductStorage" />
+      <recent name="C:\xampp\htdocs\Product-Catalog\app\Models" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4ede8648-d672-4c1f-8815-8af0c2444b5e" name="Changes" comment="" />
+      <created>1634376650762</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1634376650762</updated>
+      <workItem from="1634376652299" duration="4406000" />
+      <workItem from="1634459162251" duration="18885000" />
+      <workItem from="1634496061335" duration="42811000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

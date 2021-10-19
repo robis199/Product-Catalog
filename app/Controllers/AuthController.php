@@ -3,7 +3,7 @@ namespace App\Controllers;
 
 use App\Storage\PDOUserDataStorage;
 
-class SignUpController extends PDOUserDataStorage
+class AuthController extends PDOUserDataStorage
 {
 
 
@@ -23,7 +23,7 @@ class SignUpController extends PDOUserDataStorage
 
     public function index()
     {
-
+        require_once 'App/Views/user/auth.template.php';;
     }
 
     public function signUpUser()
@@ -115,6 +115,32 @@ class SignUpController extends PDOUserDataStorage
         return $dataCheck;
     }
 
+
+
+    public function logInUser()
+    {
+        if($this->emptyField() == false){
+            echo "Empty input";
+            exit();
+        }
+
+        $this->getUser($this->username, $this->password);
+        require_once 'App/Views/user/login.php';
+    }
+
+
+
+    private function emptyLogInField(): bool
+    {
+        if(empty($this->username)||(empty($this->password))) {
+            $dataCheck = false;
+        }
+        else
+        {
+            $dataCheck  = true;
+        }
+        return $dataCheck;
+    }
 }
 
 

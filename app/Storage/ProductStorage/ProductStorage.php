@@ -1,13 +1,13 @@
 <?php
-namespace App\ProductStorage;
+Namespace App\Storage\ProductStorage;
 
-use App\Collections\ProductCollection;
+use App\Models\Collections\ProductsCollection;
 use App\Models\Product;
 
 interface ProductStorage
 {
-    public function getAll(): ProductCollection;
-    public function getOne(string $id): ?Product;
+    public function getAll(): ProductsCollection;
+    public function getOne(string $productId): ?Product;
 
     public function save(Product $product): void;
     public function delete(Product $product): void;

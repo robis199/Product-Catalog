@@ -3,8 +3,8 @@ namespace App\Controllers;
 
 
 use App\Models\Product;
-use App\ProductStorage\PDOProductStorage;
-use App\ProductStorage\ProductStorage;
+use App\Storage\ProductStorage\PDOProductStorage;
+use App\Storage\ProductStorage\ProductStorage;
 use Ramsey\Uuid\Uuid;
 
 class ProductsController
@@ -18,14 +18,12 @@ class ProductsController
 
     }
 
-
     public function index()
     {
         $tasks = $this->productsStorage->getAll();
 
         require_once 'App/Views/products/index.template.php';
     }
-
 
     public function create()
     {
@@ -35,17 +33,19 @@ class ProductsController
 
     public function store()
     {
-
-
         $product = new Product(
-            $_POST['car'],
-            $_POST['boat'],
-            $_POST['airplane'],
-
+            Uuid::uuid4(),
+            $_POST['make'],
+            $_POST['model'],
+            $_POST['price'],
+            $_POST['category'],
         );
 
         $this->productsStorage->save($product);
 
+
+
+        header('Location: /tasks');
 
         header('Location: /products');
     }
