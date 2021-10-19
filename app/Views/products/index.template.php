@@ -1,21 +1,22 @@
 <?php require_once 'app/Views/partials/html.boilerplate.php';?>
-<?php require_once 'app/Models/Collections/ProductsCollection.php';?>
 
     <body>
     <h1>Products</h1> (<a href="/products/create">Add</a>)
-    <ul>
+    <div class="d-flex p-2">
+    <ul class="list-group">
+        <div class="d-flex">
         <?php foreach ($products->getProducts() as $product): ?>
-            <li>
-                <a href="/products/<?php echo $product->getProductId(); ?>">
-                    <?php echo $product->getModel(); ?>
+            <li class="list-group-item d-flex justify-content-between align-items-center"><a href="/products/<?php echo $product->getProductId(); ?>">
+                    Model-<?php echo $product->getModel(); ?>
+                    Price-<?php echo $product->getPrice(); ?>
                 </a>
-                <small>
-                    (<?php echo $product->getCategory(); ?>)
-                </small>
+                <span class="badge badge-primary badge-pill"><?php echo $product->getCategory(); ?></span>
             </li>
         <?php endforeach; ?>
+        </div>
     </ul>
     </body>
+
 
 
 <?php require_once 'app/Views/partials/html.closing.php';?>

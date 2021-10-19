@@ -16,7 +16,7 @@ $r->get('/products/{id}', 'ProductsController-show');
 
 
 
-$r->post('/authorization/main', 'AuthController-show');
+$r->post('/authorization/main', 'AuthController-index');
 
 $r->post('/authorization/sign-up', 'AuthController-sign');
 

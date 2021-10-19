@@ -2,7 +2,7 @@
 
 namespace App\Storage;
 
-use config\databaseConnect;
+use App\Config\DatabaseConnect;
 use PDO;
 
 class PDOUserDataStorage extends databaseConnect implements UserDataStorage
@@ -73,13 +73,6 @@ class PDOUserDataStorage extends databaseConnect implements UserDataStorage
         }
 
     }
-
-
-
-
-
-
-
 
 
 

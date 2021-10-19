@@ -3,11 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="4ede8648-d672-4c1f-8815-8af0c2444b5e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/ProductsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Storage/ProductStorage/PDOProductStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Storage/ProductStorage/PDOProductStorage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Storage/ProductStorage/ProductStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Storage/ProductStorage/ProductStorage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Storage/UserDataStorage/PDOUserDataStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Storage/UserDataStorage/PDOUserDataStorage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/products/create.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/create.template.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/products/index.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/index.template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/products/show.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/show.template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +53,9 @@
       <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1zaC8EGXkPOeHg3zdiLFezO7ytw" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -83,7 +91,7 @@
       <updated>1634376650762</updated>
       <workItem from="1634376652299" duration="4406000" />
       <workItem from="1634459162251" duration="18885000" />
-      <workItem from="1634496061335" duration="50141000" />
+      <workItem from="1634496061335" duration="57541000" />
     </task>
     <servers />
   </component>

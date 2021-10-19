@@ -2,55 +2,75 @@
 namespace App\Controllers;
 
 use App\Storage\PDOUserDataStorage;
+use Ramsey\Uuid\Nonstandard\Uuid;
 
 class AuthController extends PDOUserDataStorage
 {
 
 
+    private string $id;
     private string $username;
     private string $email;
     private string $password;
     private string $passwordRepeat;
 
 
-    public function __construct($username,$email, $password, $passwordRepeat)
+    public function __construct($id,$username,$email, $password, $passwordRepeat)
     {
+        $this->id = $id;
         $this->username = $username;
         $this->email = $email;
         $this->password = $password;
         $this->passwordRepeat = $passwordRepeat;
     }
 
-    public function index()
+    public function indexSignUp()
     {
-        require_once 'App/Views/user/auth.template.php';;
+        require_once 'App/Views/user/auth.template.php';
     }
 
-    public function signUpUser()
+    public function indexLogin()
     {
+        require_once 'App/Views/user/login.template.php';
+    }
+
+    public function signUpUser(): void
+    {
+        $id = Uuid::uuid4();
+        $name = trim($_POST['name']);
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $passwordRepeat = $_POST['passwordRepeat'];
+
         if($this->emptyField() == false){
             echo "Empty input";
-            exit();
+              require_once 'App/Views/user/auth.template.php';
         }
         if($this->invalidSymbol() == false){
             echo "Invalid symbols used";
-            exit();
+              require_once 'App/Views/user/auth.template.php';
         }
         if($this->invalidEmail() == false){
             echo "Invalid email";
-            exit();
+              require_once 'App/Views/user/auth.template.php';
         }
         if($this->passwordValidate() == false){
             echo "Passwords do not match";
-            exit();
+              require_once 'App/Views/user/auth.template.php';
         }
         if($this->usernameExists() == false){
             echo "Username or email taken";
-            exit();
+              require_once 'App/Views/user/auth.template.php';
         }
 
         $this->setUser($this->username, $this->password, $this->email);
-    }
+        $_SESSION['id'] = $this->id;
+
+        header('Location: /');
+
+
+}
+
 
     private function emptyField(): bool
     {
@@ -75,8 +95,8 @@ class AuthController extends PDOUserDataStorage
         {
             $dataCheck = true;
         }
-
         return $dataCheck;
+
     }
 
     private function invalidEmail(): bool
@@ -125,7 +145,7 @@ class AuthController extends PDOUserDataStorage
         }
 
         $this->getUser($this->username, $this->password);
-        require_once 'App/Views/user/login.php';
+        require_once 'App/Views/user/login.template.php';
     }
 
 
@@ -140,6 +160,13 @@ class AuthController extends PDOUserDataStorage
             $dataCheck  = true;
         }
         return $dataCheck;
+    }
+
+
+    public function logout(): void
+    {
+        unset($_SESSION['id']);
+        header('Location: /login');
     }
 }
 

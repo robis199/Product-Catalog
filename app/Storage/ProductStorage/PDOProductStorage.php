@@ -10,11 +10,11 @@ use PDO;
 class PDOProductStorage extends DatabaseConnect implements ProductStorage
 {
 
-    function getOne(string $productId): ?Product
+    function getOne(Product $product): ?Product
     {
         $sql = "SELECT * FROM product_transport WHERE product_id = ?";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$productId]);
+        $stmt->execute([$product->getProductId()]);
         $product = $stmt->fetch();
 
         return new Product(
@@ -29,8 +29,8 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
 
     public function getAll(array $filters = []): ProductsCollection
     {
-        $statement = $this->connect()->query("SELECT * FROM product_transport");
-        $products = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $stmt = $this->connect()->query("SELECT * FROM product_transport");
+        $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $collection = new ProductsCollection();
 
         foreach ($products as $product) {

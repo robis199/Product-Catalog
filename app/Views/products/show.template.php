@@ -9,7 +9,6 @@
     <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
 </form>
 
-
 (<a href="/products">Back</a>)
 
 

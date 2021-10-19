@@ -1,3 +1,10 @@
+
+<?php require_once 'app/Views/partials/html.boilerplate.php'; ?>
+
+
+<a href = "/products">Return</a>
+<br/>
+
 <h1>Yes, our products come in the form of an automobile, airplane or boat.</h1>
 <h2>Add a transportation unit to our super safe database</h2>
 <br>
@@ -17,21 +24,21 @@
     <br>
 
     <div class="form-check">
-        <input class="category" name="category" type="checkbox" value="1" id="category">
+        <input class="category" name="category" type="checkbox" value="car" id="category">
         <label class="category" for="car">
             Car
         </label>
     </div>
 
     <div class="form-check">
-        <input class="category" name="category" type="checkbox" value="1" id="category">
+        <input class="category" name="category" type="checkbox" value="boat" id="category">
         <label class="category" for="boat">
             Boat
         </label>
     </div>
 
     <div class="form-check">
-        <input class="category" name="category" type="checkbox" value="1" id="category">
+        <input class="category" name="category" type="checkbox" value="airplane" id="category">
         <label class="category" for="airplane">
             Airplane
         </label>
@@ -40,3 +47,6 @@
     <button type="submit" class="btn btn-primary mb-3">Confirm</button>
   </div>
 </form>
+</div>
+
+<?php require_once 'app/Views/partials/html.closing.php'; ?>

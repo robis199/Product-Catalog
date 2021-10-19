@@ -1,7 +1,7 @@
 <?php
 namespace App\Models;
-
 use Carbon\Carbon;
+
 class Product
 {
     private string $productId;

@@ -10,17 +10,17 @@ use Ramsey\Uuid\Uuid;
 class ProductsController
 {
 
-    private ProductStorage $productsStorage;
+    private ProductStorage $productStorage;
 
     public function __construct()
     {
-        $this->productsStorage = new PDOProductStorage();
+        $this->productStorage = new PDOProductStorage();
 
     }
 
     public function index()
     {
-        $tasks = $this->productsStorage->getAll();
+        $products = $this->productStorage->getAll();
 
         require_once 'App/Views/products/index.template.php';
     }
@@ -42,7 +42,7 @@ class ProductsController
             $_POST['created_at'],
         );
 
-        $this->productsStorage->save($product);
+        $this->productStorage->save($product);
 
 
         header('Location: /products');
@@ -55,10 +55,10 @@ class ProductsController
 
         if ($productId == null) header('Location: /');
 
-        $product = $this->productsStorage->getOne($productId);
+        $product = $this->productStorage->getOne($productId);
 
         if ($product !== null) {
-            $this->productsStorage->delete($product);
+            $this->productStorage->delete($product);
         }
 
         header('Location: /');
@@ -73,7 +73,7 @@ class ProductsController
 
         if ($productId == null) header('Location: /');
 
-        $product = $this->productsStorage->getOne($productId);
+        $product = $this->productStorage->getOne($productId);
 
         if ($product === null) header('Location: /');
 
