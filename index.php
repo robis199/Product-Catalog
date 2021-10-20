@@ -25,8 +25,8 @@ $r->get('/products/{id}', 'ProductsController-show');
 
 $r->get('/login', 'AuthController-indexLogin');
 $r->get('/signup', 'AuthController-indexSignUp');
-$r->post('/login', 'LogInController-logInUser');
-$r->post('/signup', 'LogInController-signUpUser');
+$r->post('/login', 'AuthController-logInUser');
+$r->post('/signup', 'AuthController-signUpUser');
 $r->get('/logout', 'AuthController-logout');
 
 });

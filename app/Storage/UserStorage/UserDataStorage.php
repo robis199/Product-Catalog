@@ -2,10 +2,10 @@
 
 namespace App\Storage\UserStorage;
 
+use App\Models\User;
+
 interface UserDataStorage
 {
-    public function setUser($username, $password, $email);
-    public function getUser($username, $password);
-    public function checkUserData($username, $email);
-
+    public function signup(User $user): void;
+    public function login($username,$password,$email);
 }

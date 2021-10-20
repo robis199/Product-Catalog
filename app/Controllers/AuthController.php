@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\User;
 use App\Storage\UserStorage\PDOUserDataStorage;
 use App\Storage\UserStorage\UserDataStorage;
 use Ramsey\Uuid\Nonstandard\Uuid;
@@ -28,37 +29,30 @@ class AuthController
     public function signUpUser(): void
     {
         $id = Uuid::uuid4();
-        $username = trim($_POST['username']);
+        $username = trim($_POST['user_name']);
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $passwordRepeat = $_POST['passwordRepeat'];
+        $passwordRepeat = $_POST['password_validate'];
 
-        if($this->emptyField() == false){
-            echo "Empty input";
-              require_once 'App/Views/user/signup.php';
-        }
-        if($this->invalidSymbol($username) == false){
-            echo "Invalid symbols used";
-              require_once 'App/Views/user/signup.php';
-        }
-        if($this->invalidEmail($email) == false){
-            echo "Invalid email";
-              require_once 'App/Views/user/signup.php';
-        }
-        if($this->passwordValidate($password,$passwordRepeat) == false){
-            echo "Passwords do not match";
-              require_once 'App/Views/user/signup.php';
-        }
-        if($this->usernameExists($username,$email) == false){
-            echo "Username or email taken";
-              require_once 'App/Views/user/signup.php';
+        if($this->emptyField() || $this->invalidSymbol($username) || $this->invalidEmail($email) || $this->passwordValidate($password,$passwordRepeat) || $this->usernameExists($username,$email) == false){
+            echo "ERROR";
+            require_once 'App/Views/user/signup.php';
         }
 
-        $this->userStorage->setUser($username, $password, $email);
-        $_SESSION['id'] = $id;
+        $password = password_hash($password,PASSWORD_DEFAULT);
+
+        $user = new User(
+          $id,
+          $username,
+          $password,
+          $email
+        );
+
+        $this->userStorage->signup($user);
+
+        $_SESSION['user_id'] = $user->getId();
 
         header('Location: /');
-
 
 }
 
@@ -127,35 +121,31 @@ class AuthController
 
 
 
-    public function logInUser($username, $password)
+    public function logInUser(): void
     {
-        if($this->emptyField() == false){
-            echo "Empty input";
-            exit();
+        $username = $_POST['user_name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        if(!$this->emptyField() || !$this->invalidEmail($email)){
+            echo "Ups, something went wrong";
+            require_once 'app/Views/user/login.php';
         }
 
-        $this->userStorage->getUser($username, $password);
-        require_once 'App/Views/user/login.php';
-    }
+
+        $user = $this->userStorage->login($username, $password, $email);
+        if ($user && password_verify($password, $user->getPassword()))
+            $_SESSION['user_id'] = $user->getId();
+            header('Location: /');
 
 
-
-    private function emptyLogInField(): bool
-    {
-        if(empty($this->username)||(empty($this->password))) {
-            $dataCheck = false;
         }
-        else
-        {
-            $dataCheck  = true;
-        }
-        return $dataCheck;
-    }
+
 
 
     public function logout(): void
     {
-        unset($_SESSION['id']);
+        unset($_SESSION['user_id']);
         header('Location: /login');
     }
 }
