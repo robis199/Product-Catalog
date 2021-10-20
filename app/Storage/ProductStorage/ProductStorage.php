@@ -13,5 +13,4 @@ interface ProductStorage
     public function save(Product $product): void;
     public function delete(Product $product): void;
     public function update(string $productId, string $make, string $model, string $price, string $category, string $updated): void;
-
 }

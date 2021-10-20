@@ -1,6 +1,6 @@
 <?php
 
-use Http\Middleware;
+use App\Http\Middleware;
 use App\Controllers\AuthController;
 
 class AuthMiddleware implements Middleware

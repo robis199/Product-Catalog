@@ -8,13 +8,10 @@ use PDO;
 
 class PDOUserDataStorage extends databaseConnect implements UserDataStorage
 {
-
     public function signup(User $user): void
     {
-        $sql = 'INSERT INTO user (user_id, user_name, password, email) VALUES (?,?,?,?)';
+        $sql = 'INSERT INTO user (user_id, user_name, email, password) VALUES (?,?,?,?)';
         $statement = $this->connect()->prepare($sql);
-
-
         $statement->execute([
             $user->getId(),
             $user->getUsername(),
@@ -28,7 +25,6 @@ class PDOUserDataStorage extends databaseConnect implements UserDataStorage
         $statement = $this->connect()->prepare('SELECT * FROM user WHERE user_name = ? OR email = ? AND password =?;');
 
         $user = $statement->fetchAll(PDO::FETCH_ASSOC);
-
 
         if (!$statement->rowCount() == 0 || !empty($user)) {
             return new User(

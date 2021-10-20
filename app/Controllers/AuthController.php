@@ -8,7 +8,6 @@ use Ramsey\Uuid\Nonstandard\Uuid;
 
 class AuthController
 {
-
     private UserDataStorage $userStorage;
 
     public function __construct()
@@ -30,9 +29,9 @@ class AuthController
     {
         $id = Uuid::uuid4();
         $username = trim($_POST['user_name']);
-        $email = $_POST['email'];
         $password = $_POST['password'];
         $passwordRepeat = $_POST['password_validate'];
+        $email = $_POST['email'];
 
         if($this->emptyField() || $this->invalidSymbol($username) || $this->invalidEmail($email) || $this->passwordValidate($password,$passwordRepeat) || $this->usernameExists($username,$email) == false){
             echo "ERROR";
@@ -54,7 +53,7 @@ class AuthController
 
         header('Location: /');
 
-}
+    }
 
     private function emptyField(): bool
     {
@@ -70,7 +69,6 @@ class AuthController
 
     private function invalidSymbol($username): bool
     {
-
         if(!preg_match("/^[a-zA-Z0-9]*$/",$username))
         {
             $dataCheck = false;
@@ -80,7 +78,6 @@ class AuthController
             $dataCheck = true;
         }
         return $dataCheck;
-
     }
 
     private function invalidEmail($email): bool
@@ -107,7 +104,6 @@ class AuthController
             return $dataCheck;
     }
 
-
     private function usernameExists($username, $email): bool
     {
         if (!$this->userStorage->checkUserData($username,$email)) {
@@ -118,8 +114,6 @@ class AuthController
         }
         return $dataCheck;
     }
-
-
 
     public function logInUser(): void
     {
@@ -132,16 +126,12 @@ class AuthController
             require_once 'app/Views/user/login.php';
         }
 
-
         $user = $this->userStorage->login($username, $password, $email);
         if ($user && password_verify($password, $user->getPassword()))
             $_SESSION['user_id'] = $user->getId();
             header('Location: /');
 
-
-        }
-
-
+    }
 
     public function logout(): void
     {

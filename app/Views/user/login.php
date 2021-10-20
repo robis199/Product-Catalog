@@ -1,6 +1,5 @@
 <?php require_once 'app\Views\partials\html.boilerplate.php';?>
 
-
 <h4>LOGIN TO AN EXISTING ACCOUNT</h4>
 
     <form action="/login" method="post">
