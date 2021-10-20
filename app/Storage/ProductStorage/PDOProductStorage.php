@@ -3,8 +3,10 @@
 Namespace App\Storage\ProductStorage;
 
 use App\Config\DatabaseConnect;
+use App\Models\Collections\CategoryCollection;
 use App\Models\Collections\ProductsCollection;
 use App\Models\Product;
+use App\Models\ProductCategory;
 use PDO;
 
 class PDOProductStorage extends DatabaseConnect implements ProductStorage
@@ -64,5 +66,33 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
         $sql = "DELETE FROM product_transport WHERE product_id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$product->getProductId()]);
+    }
+
+
+    public function update(string $productId, string $make, string $model, string $price, string $category, string $updated): void
+    {
+        $stmt = $this->connect()->query('UPDATE product_transport SET make = ?, model = ?, category = ?, 
+                    price = ?, updated = ? WHERE product_id = ?');
+        $stmt->execute([$productId, $make, $model, $price, $category, $updated]);
+    }
+
+
+    public function getCategories(): CategoryCollection
+    {
+        $collection = new CategoryCollection();
+
+        $sql = 'SELECT * FROM product_category';
+        $stmt = $this->connect()->prepare($sql);
+
+        $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($categories as $category) {
+            $collection->add(new ProductCategory(
+                $category['category_id'],
+                $category['category_name']
+            ));
+        }
+
+        return $collection;
     }
 }

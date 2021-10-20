@@ -9,7 +9,7 @@ class PDOUserDataStorage extends databaseConnect implements UserDataStorage
 {
 
     public function setUser($username, $password, $email) {
-        $statement = $this->connect()->prepare('INSERT INTO user (user_name, password, email) VALUES (?,?,?);');
+        $statement = $this->connect()->prepare("INSERT INTO user (id, user_name, password, email) VALUES (?,?,?,?)");
 
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 

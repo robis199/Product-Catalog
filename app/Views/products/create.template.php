@@ -49,4 +49,16 @@
 </form>
 </div>
 
+
+<div class="form-group m-2 col-md-6">
+    <label for="category">Category</label>
+    <select class="custom-select d-block" id="category" name="category">
+        <option selected>Choose...</option>
+        <?php foreach ($categories as $category): ?>
+            <option value="<?php echo $category->getCategoryId() ?>">
+                <?php echo $category->getName() ?></option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
 <?php require_once 'app/Views/partials/html.closing.php'; ?>

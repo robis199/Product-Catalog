@@ -10,19 +10,17 @@ $r->get('/products', 'ProductsController-index');
 $r->get('/products/create', 'ProductsController-create');
 $r->post('/products', 'ProductsController-store');
 $r->post('/products/{id}', 'ProductsController-delete');
-//edit
+$r->get('/products/{id}/edit', 'ProductsController-edit');
+$r->post('/products/{id}/edit', 'ProductsController-edit');
+$r->get('/search', 'ProductsController-search');
 $r->get('/products/{id}', 'ProductsController-show');
 
 
-
-
-$r->post('/authorization/main', 'AuthController-index');
-
-$r->post('/authorization/sign-up', 'AuthController-sign');
-
-$r->get('/authorization/log-in', 'LogInController-log');
-
-$r->get('/authorization/log-out', 'LogInController-logout');
+$r->get('/login', 'AuthController-indexLogin');
+$r->get('/signup', 'AuthController-indexSignUp');
+$r->post('/login', 'LogInController-logInUser');
+$r->post('/signup', 'LogInController-signUpUser');
+$r->get('/logout', 'AuthController-logout');
 
 });
 

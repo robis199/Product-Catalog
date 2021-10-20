@@ -26,12 +26,12 @@ class AuthController extends PDOUserDataStorage
 
     public function indexSignUp()
     {
-        require_once 'App/Views/user/auth.template.php';
+        require_once 'App/Views/user/signup.php';
     }
 
     public function indexLogin()
     {
-        require_once 'App/Views/user/login.template.php';
+        require_once 'App/Views/user/login.php';
     }
 
     public function signUpUser(): void
@@ -44,23 +44,23 @@ class AuthController extends PDOUserDataStorage
 
         if($this->emptyField() == false){
             echo "Empty input";
-              require_once 'App/Views/user/auth.template.php';
+              require_once 'App/Views/user/signup.php';
         }
         if($this->invalidSymbol() == false){
             echo "Invalid symbols used";
-              require_once 'App/Views/user/auth.template.php';
+              require_once 'App/Views/user/signup.php';
         }
         if($this->invalidEmail() == false){
             echo "Invalid email";
-              require_once 'App/Views/user/auth.template.php';
+              require_once 'App/Views/user/signup.php';
         }
         if($this->passwordValidate() == false){
             echo "Passwords do not match";
-              require_once 'App/Views/user/auth.template.php';
+              require_once 'App/Views/user/signup.php';
         }
         if($this->usernameExists() == false){
             echo "Username or email taken";
-              require_once 'App/Views/user/auth.template.php';
+              require_once 'App/Views/user/signup.php';
         }
 
         $this->setUser($this->username, $this->password, $this->email);
@@ -145,7 +145,7 @@ class AuthController extends PDOUserDataStorage
         }
 
         $this->getUser($this->username, $this->password);
-        require_once 'App/Views/user/login.template.php';
+        require_once 'App/Views/user/login.php';
     }
 
 

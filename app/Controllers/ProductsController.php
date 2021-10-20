@@ -64,6 +64,27 @@ class ProductsController
         header('Location: /');
     }
 
+    public function update(array $vars): void
+    {
+        $productId = $vars['id'] ?? null;
+
+
+        if ($productId == null) header('Location: /');
+
+        $product = $this->productStorage->getOne($productId);
+
+
+        if ($product !== null)
+        {
+
+            $categories = $this->productStorage->getAll();
+            require_once 'app/Views/Products/update.template.php';
+        }
+        else {
+            header('Location: /');
+        }
+        }
+
 
     public function show(array $vars)
     {

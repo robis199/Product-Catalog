@@ -5,13 +5,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Controllers/ProductsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Controllers/ProductsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Storage/ProductStorage/PDOProductStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Storage/ProductStorage/PDOProductStorage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Storage/ProductStorage/ProductStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Storage/ProductStorage/ProductStorage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Storage/UserDataStorage/PDOUserDataStorage.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Storage/UserDataStorage/PDOUserDataStorage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Views/products/create.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/create.template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/products/index.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/index.template.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Views/products/show.template.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/products/show.template.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/user/auth.template.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/user/loggedin.template.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/user/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/user/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/user/logout.template.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Views/user/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Views/user/signup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +93,7 @@
       <updated>1634376650762</updated>
       <workItem from="1634376652299" duration="4406000" />
       <workItem from="1634459162251" duration="18885000" />
-      <workItem from="1634496061335" duration="57541000" />
+      <workItem from="1634496061335" duration="63800000" />
     </task>
     <servers />
   </component>

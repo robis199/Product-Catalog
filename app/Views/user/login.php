@@ -1,22 +1,23 @@
-<?php
+<?php require_once 'app\Views\partials\html.boilerplate.php';?>
 
 
-use App\Controllers\LogInController;
+<h4>LOGIN TO AN EXISTING ACCOUNT</h4>
 
+    <form action="/login" method="post">
 
-if(isset($_GET["submit"]))
-{
+        <label for="user_name"><b>Username</b>
+            <input type="text" placeholder="Enter username" name="user_name" required>
+        </label>
 
-    $username = $_GET["user_name"];
-    $password = $_GET["password"];
+        <label for="password"><b>Password</b>
+            <input type="password" placeholder="Enter Password" name="password" required>
+        </label>
 
+        <label for="email"><b>Email</b>
+            <input type="email" placeholder="Enter Email" name="email" required>
+        </label>
 
+        <button type="submit" name="submit">LOGIN</button>
+    </form>
 
-    $login = new LogInController($username,$password);
-
-
-    $login->logInUser();
-
-    header("location: /");
-
-}
+<?php require_once 'app\Views\partials\html.closing.php';?>
