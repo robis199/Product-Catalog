@@ -4,6 +4,13 @@
 require_once 'vendor/autoload.php';
 
 
+$middlewares = [
+    'ProductsController-show' => [
+        AuthMiddleware::class
+    ]
+
+];
+
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
 $r->get('/', 'ProductsController-index');
 $r->get('/products', 'ProductsController-index');

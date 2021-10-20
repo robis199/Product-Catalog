@@ -7,7 +7,7 @@ use App\Models\Tag;
 use App\Config\DatabaseConnect;
 use PDO;
 
-class MySqlTagsRepository extends DatabaseConnect implements TagsRepository
+class PDOTagStorage extends DatabaseConnect implements TagStorage
 {
 
 
@@ -37,8 +37,8 @@ class MySqlTagsRepository extends DatabaseConnect implements TagsRepository
     {
         foreach ($tags as $tag)
         {
-            $statement = $this->pdo->prepare('INSERT INTO products_tags (product_id, tag_id) VALUES (?, ?)');
-            $statement->execute([$productId, $tag]);
+            $stmt = $this->connect()->prepare('INSERT INTO products_tags (product_id, tag_id) VALUES (?, ?)');
+            $stmt->execute([$productId, $tag]);
         }
     }
 }
