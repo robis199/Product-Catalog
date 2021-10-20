@@ -5,8 +5,9 @@
 
 <h4><?php echo $product->getCategory(); ?></h4>
 
-<form method="post" action="/products/<?php echo $product->getProductId(); ?>">
-    <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+<form action="/products/<?php echo $product->getProductId() ?>/delete" method="post"
+      onSubmit="return confirm('Are you sure?');">
+    <button type="submit" class="btn btn-danger">Delete</button>
 </form>
 
 (<a href="/products">Back</a>)

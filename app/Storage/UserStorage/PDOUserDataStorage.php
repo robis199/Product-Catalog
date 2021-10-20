@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Storage;
+namespace App\Storage\UserStorage;
 
 use App\Config\DatabaseConnect;
 use PDO;

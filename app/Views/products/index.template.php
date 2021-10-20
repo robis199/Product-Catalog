@@ -12,6 +12,13 @@
                 </a>
                 <span class="badge badge-primary badge-pill"><?php echo $product->getCategory(); ?></span>
             </li>
+
+        <li>
+            <form action="/products/<?php echo $product->getProductId() ?>/edit" method="get">
+                <button type="submit" class="btn btn-secondary">Edit</button>
+            </form>
+        </li>
+
         <?php endforeach; ?>
         </div>
     </ul>

@@ -12,7 +12,6 @@ use App\Storage\TagStorage\TagStorage;
 
 class ProductsController
 {
-
     private ProductStorage $productStorage;
     private TagStorage $tagStorage;
 
@@ -45,16 +44,10 @@ class ProductsController
             $_POST['model'],
             $_POST['price'],
             $_POST['category'],
-            $_POST['created_at'],
         );
 
-        $tag = new Tag(
-            Uuid::uuid4(),
-            $_POST['tag'] ?? null
-        );
 
         $this->productStorage->save($product);
-        $this->tagStorage->save($tag);
 
 
 
@@ -90,7 +83,7 @@ class ProductsController
         if ($product !== null)
         {
 
-            $categories = $this->productStorage->getAll();
+            $categories = $this->ca->getAll();
             require_once 'app/Views/Products/update.template.php';
         }
         else {

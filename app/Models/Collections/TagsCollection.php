@@ -14,7 +14,6 @@ class TagsCollection
             $this->add($tag);
         }
     }
-
     public function add(Tag $tag): void
     {
         $this->tags[] = $tag;
@@ -24,4 +23,7 @@ class TagsCollection
     {
         return $this->tags;
     }
+
+
 }
+

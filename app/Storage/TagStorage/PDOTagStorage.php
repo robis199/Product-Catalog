@@ -9,8 +9,6 @@ use PDO;
 
 class PDOTagStorage extends DatabaseConnect implements TagStorage
 {
-
-
     public function getTags(): TagsCollection
     {
         $collection = new TagsCollection();
@@ -24,8 +22,8 @@ class PDOTagStorage extends DatabaseConnect implements TagStorage
         {
             $collection->add(
                 new Tag(
-                    $tag['id'],
-                    $tag['name']
+                    $tag['tag_id'],
+                    $tag['tag_name']
                 )
             );
         }
@@ -41,4 +39,5 @@ class PDOTagStorage extends DatabaseConnect implements TagStorage
             $stmt->execute([$productId, $tag]);
         }
     }
+
 }
