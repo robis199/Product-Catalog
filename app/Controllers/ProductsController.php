@@ -3,24 +3,30 @@ namespace App\Controllers;
 
 
 use App\Models\Product;
+use App\Models\Tag;
 use App\Storage\ProductStorage\PDOProductStorage;
 use App\Storage\ProductStorage\ProductStorage;
 use Ramsey\Uuid\Uuid;
+use App\Storage\TagStorage\PDOTagStorage;
+use App\Storage\TagStorage\TagStorage;
 
 class ProductsController
 {
 
     private ProductStorage $productStorage;
+    private TagStorage $tagStorage;
 
     public function __construct()
     {
         $this->productStorage = new PDOProductStorage();
+        $this->tagStorage = new PDOTagStorage();
 
     }
 
     public function index()
     {
         $products = $this->productStorage->getAll();
+        $tags = $this->tagStorage->getTags()->allTags();
 
         require_once 'App/Views/products/index.template.php';
     }
@@ -42,7 +48,14 @@ class ProductsController
             $_POST['created_at'],
         );
 
+        $tag = new Tag(
+            Uuid::uuid4(),
+            $_POST['tag'] ?? null
+        );
+
         $this->productStorage->save($product);
+        $this->tagStorage->save($tag);
+
 
 
         header('Location: /products');

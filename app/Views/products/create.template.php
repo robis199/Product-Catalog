@@ -46,19 +46,30 @@
   <div class="col-auto">
     <button type="submit" class="btn btn-primary mb-3">Confirm</button>
   </div>
+
+
+    <div class="form-group m-2 col-md-6">
+        <label for="category">Category</label>
+        <select class="custom-select d-block" id="category" name="category">
+            <option selected>Choose...</option>
+            <?php foreach ($categories as $category): ?>
+                <option value="<?php echo $category->getCategoryId() ?>">
+                    <?php echo $category->getName() ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+
+
+    <label class="d-block m-2">Tags: </label>
+    <?php foreach ($tags as $tag): ?>
+        <div class="form-check form-check-inline m-2">
+            <input class="form-check-input" type="checkbox"
+                   id="inlineCheckbox1" name="tags[]" value="<?php echo $tag->id()?>">
+            <label class="form-check-label" for="inlineCheckbox1"><?php echo $tag->name()?></label>
+        </div>
+    <?php endforeach; ?>
 </form>
 </div>
 
-
-<div class="form-group m-2 col-md-6">
-    <label for="category">Category</label>
-    <select class="custom-select d-block" id="category" name="category">
-        <option selected>Choose...</option>
-        <?php foreach ($categories as $category): ?>
-            <option value="<?php echo $category->getCategoryId() ?>">
-                <?php echo $category->getName() ?></option>
-        <?php endforeach; ?>
-    </select>
-</div>
 
 <?php require_once 'app/Views/partials/html.closing.php'; ?>
