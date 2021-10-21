@@ -1,13 +1,14 @@
 <?php
+namespace App\Middleware;
 
 use App\Http\Middleware;
-use App\Controllers\AuthController;
+use App\Http\LogInRequest;
 
 class AuthMiddleware implements Middleware
 {
     public function handle(): void
     {
-        if(AuthController::getUser()) {
+        if(LogInRequest::userSession()) {
             header('Location: /login');
             exit;
         }

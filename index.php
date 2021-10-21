@@ -1,15 +1,11 @@
 <?php
 
+use App\Http\LogInRequest;
+use App\Middleware\AuthMiddleware;
 
 require_once 'vendor/autoload.php';
 
-
-$middlewares = [
-    'ProductsController-show' => [
-        AuthMiddleware::class
-    ]
-
-];
+session_start();
 
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
 $r->get('/', 'ProductsController-index');
@@ -17,8 +13,8 @@ $r->get('/products', 'ProductsController-index');
 $r->get('/products/create', 'ProductsController-create');
 $r->post('/products', 'ProductsController-store');
 $r->post('/products/{id}', 'ProductsController-delete');
-$r->get('/products/{id}/edit', 'ProductsController-edit');
-$r->post('/products/{id}/edit', 'ProductsController-edit');
+$r->get('/products/{id}/edit', 'ProductsController-update');
+$r->post('/products/{id}/edit', 'ProductsController-update');
 $r->get('/search', 'ProductsController-search');
 $r->get('/products/{id}', 'ProductsController-show');
 
@@ -36,7 +32,6 @@ function base_path(): string
     return __DIR__;
 
 }
-
 
 // Fetch method and URI from somewhere
 $httpMethod = $_SERVER['REQUEST_METHOD'];
@@ -64,6 +59,32 @@ switch ($routeInfo[0])
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
 
+        $middlewares = [
+            'ProductController-index' => [
+                AuthMiddleware::class
+            ],
+            'ProductController-create' => [
+                AuthMiddleware::class
+            ],
+            'ProductController-store' => [
+                AuthMiddleware::class
+            ],
+            'ProductController-update' => [
+                AuthMiddleware::class
+            ],
+            'ProductControoler-delete' => [
+                AuthMiddleware::class
+            ],
+            'ProductController-search' => [
+                AuthMiddleware::class
+                ]
+        ];
+
+        if(isset($middlewares[$_SESSION['user_id']]))
+        {
+            return LogInRequest::userSession();
+        }
+
         [$controller, $method] = explode('-', $handler);
 
         $controller = 'App\Controllers\\' . $controller;
@@ -73,3 +94,6 @@ switch ($routeInfo[0])
 
         break;
 }
+
+
+session_unset();
