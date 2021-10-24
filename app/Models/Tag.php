@@ -3,18 +3,18 @@ namespace App\Models;
 
 class Tag
 {
-    private string $id;
+    private string $tagId;
     private string $name;
 
-    public function __construct(string $id, string $name)
+    public function __construct(string $tagId, string $name)
     {
-        $this->id = $id;
+        $this->tagId = $tagId;
         $this->name = $name;
     }
 
     public function id(): int
     {
-        return $this->id;
+        return $this->tagId;
     }
 
     public function name(): string

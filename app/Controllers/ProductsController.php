@@ -8,6 +8,7 @@ use App\Storage\ProductStorage\ProductStorage;
 use Ramsey\Uuid\Uuid;
 use App\Storage\TagStorage\PDOTagStorage;
 use App\Storage\TagStorage\TagStorage;
+use App\Redirect;
 
 class ProductsController
 {
@@ -40,13 +41,16 @@ class ProductsController
     public function create(): void
     {
         $categories = $this->categoryCollection->getAll();
-        $tags = $this->tagStorage->getTags();
+        $tags = $this->tagStorage->getTags()->allTags();
 
         require_once 'App/Views/products/create.template.php';
     }
 
     public function store()
     {
+        $categories = $this->productStorage->getCategories()->getAll();
+        $tags = $this->tagStorage->getTags()->allTags();
+
         $product = new Product(
             Uuid::uuid4(),
             $_POST['make'],
@@ -56,6 +60,7 @@ class ProductsController
         );
 
         $this->productStorage->save($product);
+
         header('Location: /products');
     }
 
@@ -71,7 +76,7 @@ class ProductsController
         if ($product !== null) {
             $this->productStorage->delete($product);
         }
-        header('Location: /');
+        Redirect::redirect("/");
     }
 
     public function update(array $vars): void
@@ -88,7 +93,7 @@ class ProductsController
             require_once 'app/Views/Products/update.template.php';
         }
         else {
-            header('Location: /');
+            Redirect::redirect("/");
         }
         }
 
@@ -96,11 +101,11 @@ class ProductsController
     {
         $productId = $vars['product_id'] ?? null;
 
-        if ($productId == null) header('Location: /');
+        if ($productId == null) Redirect::redirect("/");;
 
         $product = $this->productStorage->getOne($productId);
 
-        if ($product === null) header('Location: /');
+        if ($product === null) Redirect::redirect("/");;
 
         require_once 'app/Views/products/show.template.php';
     }

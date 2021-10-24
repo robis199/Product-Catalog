@@ -2,9 +2,9 @@
 
 namespace App\Storage\TagStorage;
 
+use App\Config\DatabaseConnect;
 use App\Models\Collections\TagsCollection;
 use App\Models\Tag;
-use App\Config\DatabaseConnect;
 use PDO;
 
 class PDOTagStorage extends DatabaseConnect implements TagStorage
@@ -38,6 +38,21 @@ class PDOTagStorage extends DatabaseConnect implements TagStorage
             $stmt = $this->connect()->prepare('INSERT INTO products_tags (product_id, tag_id) VALUES (?, ?)');
             $stmt->execute([$productId, $tag]);
         }
+    }
+
+    public function getTagById(string $tagId): ?Tag
+    {
+        $stmt = $this->connect()->prepare('SELECT * FROM tags WHERE id = :tagId LIMIT 1');
+        $stmt->execute();
+
+        $result = $stmt->fetch();
+
+        if (empty($result)) return null;
+
+        return new Tag(
+            $result['tag_id'],
+            $result['tag_name']
+        );
     }
 
 }

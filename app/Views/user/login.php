@@ -1,6 +1,7 @@
 <?php require_once 'app\Views\partials\html.boilerplate.php';?>
 
 <h4>LOGIN TO AN EXISTING ACCOUNT</h4>
+    <small class="d-block">Not a user? <a href="/signup">Sign up here</a></small>
 
     <form action="/login" method="post">
 

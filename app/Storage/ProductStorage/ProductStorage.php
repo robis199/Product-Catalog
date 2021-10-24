@@ -4,11 +4,13 @@ Namespace App\Storage\ProductStorage;
 use App\Models\Collections\CategoryCollection;
 use App\Models\Collections\ProductsCollection;
 use App\Models\Product;
+use App\Models\ProductCategory;
 
 interface ProductStorage
 {
     public function getAll(): ProductsCollection;
     public function getOne(Product $product): ?Product;
+    public function getCategoryById(string $id): ?ProductCategory;
     public function getCategories(): CategoryCollection;
     public function save(Product $product): void;
     public function delete(Product $product): void;

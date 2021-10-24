@@ -6,7 +6,7 @@ use App\Config\DatabaseConnect;
 use App\Models\User;
 use PDO;
 
-class PDOUserDataStorage extends databaseConnect implements UserDataStorage
+class PDOUserDataStorage extends DatabaseConnect implements UserDataStorage
 {
     public function signup(User $user): void
     {

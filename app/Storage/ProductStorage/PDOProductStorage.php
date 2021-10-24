@@ -7,10 +7,17 @@ use App\Models\Collections\CategoryCollection;
 use App\Models\Collections\ProductsCollection;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Storage\TagStorage\PDOTagStorage;
 use PDO;
 
 class PDOProductStorage extends DatabaseConnect implements ProductStorage
 {
+    private PDOTagStorage $tagsStorage;
+
+public function __construct()
+{
+    $this->tagsStorage = new PDOTagStorage();
+}
 
     function getOne(Product $product): ?Product
     {
@@ -94,5 +101,22 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
         }
 
         return $collection;
+    }
+
+    public function getCategoryById(string $id): ?ProductCategory
+    {
+        $sql = 'SELECT * FROM product_category WHERE category_id = ? LIMIT 1';
+        $statement = $this->connect()->prepare($sql);
+        $statement->execute([$id]);
+
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        if (empty($result)) return null;
+
+        return new ProductCategory(
+            $result['category_id'],
+            $result['category_name']
+        );
+
     }
 }

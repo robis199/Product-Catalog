@@ -5,6 +5,7 @@ use App\Models\User;
 use App\Storage\UserStorage\PDOUserDataStorage;
 use App\Storage\UserStorage\UserDataStorage;
 use Ramsey\Uuid\Nonstandard\Uuid;
+use App\Redirect;
 
 class AuthController
 {
@@ -51,7 +52,7 @@ class AuthController
 
         $_SESSION['user_id'] = $user->getId();
 
-        header('Location: /');
+        Redirect::redirect("/");
 
     }
 
@@ -129,7 +130,7 @@ class AuthController
         $user = $this->userStorage->login($username, $password, $email);
         if ($user && password_verify($password, $user->getPassword()))
             $_SESSION['user_id'] = $user->getId();
-            header('Location: /');
+            Redirect::redirect("/");
 
     }
 

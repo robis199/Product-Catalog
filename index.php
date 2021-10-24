@@ -1,9 +1,9 @@
 <?php
+require_once 'vendor/autoload.php';
 
 use App\Http\LogInRequest;
 use App\Middleware\AuthMiddleware;
 
-require_once 'vendor/autoload.php';
 
 session_start();
 
