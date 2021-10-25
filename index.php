@@ -1,9 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 
-use App\Http\LogInRequest;
-use App\Middleware\AuthMiddleware;
-
+use DI\Container;
 
 session_start();
 
@@ -27,11 +25,7 @@ $r->get('/logout', 'AuthController-logout');
 
 });
 
-function base_path(): string
-{
-    return __DIR__;
-
-}
+$container = new Container();
 
 // Fetch method and URI from somewhere
 $httpMethod = $_SERVER['REQUEST_METHOD'];
@@ -59,41 +53,19 @@ switch ($routeInfo[0])
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
 
-        $middlewares = [
-            'ProductController-index' => [
-                AuthMiddleware::class
-            ],
-            'ProductController-create' => [
-                AuthMiddleware::class
-            ],
-            'ProductController-store' => [
-                AuthMiddleware::class
-            ],
-            'ProductController-update' => [
-                AuthMiddleware::class
-            ],
-            'ProductControoler-delete' => [
-                AuthMiddleware::class
-            ],
-            'ProductController-search' => [
-                AuthMiddleware::class
-                ]
-        ];
+        $middlewares = require_once 'app/middlewares.php';
 
-        if(isset($middlewares[$_SESSION['user_id']]))
-        {
-            return LogInRequest::userSession();
+        if (array_key_exists($handler, $middlewares)) {
+            foreach ($middlewares[$handler] as $middleware) {
+                $middleware = $container->get($middleware);
+                $middleware->handle();
+            }
         }
-
         [$controller, $method] = explode('-', $handler);
 
         $controller = 'App\Controllers\\' . $controller;
         $controller = new $controller();
         $render = $controller->$method($vars);
 
-
         break;
 }
-
-
-session_unset();

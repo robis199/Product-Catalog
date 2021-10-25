@@ -6,14 +6,15 @@ use App\Storage\UserStorage\PDOUserDataStorage;
 use App\Storage\UserStorage\UserDataStorage;
 use Ramsey\Uuid\Nonstandard\Uuid;
 use App\Redirect;
+use DI\Container;
 
 class AuthController
 {
     private UserDataStorage $userStorage;
 
-    public function __construct()
+    public function __construct(Container $container)
     {
-        $this->userStorage = new PDOUserDataStorage();
+        $this->userStorage == $container->get(PDOUserDataStorage::class);
     }
 
     public function indexSignUp()

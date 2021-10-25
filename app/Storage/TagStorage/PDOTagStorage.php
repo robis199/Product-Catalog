@@ -55,4 +55,32 @@ class PDOTagStorage extends DatabaseConnect implements TagStorage
         );
     }
 
+
+    public function productTag(string $productId): TagsCollection
+    {
+        $tags = [];
+        $collection = new TagsCollection();
+
+        $sql = "SELECT * FROM products_tags WHERE product_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $item)
+        {
+            $tags[] = $this->getTagById($item['tag_id']);
+        }
+
+        foreach ($tags as $tag)
+        {
+            $collection->add(new Tag(
+                    $tag->id(),
+                    $tag->name()
+                )
+            );
+        }
+        return $collection;
+    }
+
 }

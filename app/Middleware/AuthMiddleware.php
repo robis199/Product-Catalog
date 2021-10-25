@@ -8,8 +8,8 @@ class AuthMiddleware implements Middleware
 {
     public function handle(): void
     {
-        if(LogInRequest::userSession()) {
-            header('Location: /login');
+        if (LogInRequest::userSession()) {
+            header('Location: /');
             exit;
         }
     }

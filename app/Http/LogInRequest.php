@@ -7,4 +7,5 @@ class LogInRequest
     {
         return ($_SESSION['user_id']);
     }
+
 }

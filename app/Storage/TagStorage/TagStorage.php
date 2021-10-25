@@ -10,4 +10,5 @@ interface TagStorage
     public function getTags(): TagsCollection;
     public function getTagById(string $tagId): ?Tag;
     public function add(array $tags, string $productId): void;
+    public function productTag(string $productId): TagsCollection;
 }
