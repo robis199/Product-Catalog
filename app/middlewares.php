@@ -6,22 +6,22 @@ return [
     'ProductController-index' => [
         UnAuthMiddleware::class
     ],
-    'ProductController@create' => [
+    'ProductController-create' => [
         UnAuthMiddleware::class,
     ],
-    'ProductController@store' => [
+    'ProductController-store' => [
         UnAuthMiddleware::class
     ],
-    'ProductControoler@delete' => [
+    'ProductController-delete' => [
         UnAuthMiddleware::class,
     ],
-    'ProductController@update' => [
+    'ProductController-update' => [
         UnAuthMiddleware::class
     ],
-    'AuthController@search' => [
+    'AuthController-search' => [
         AuthMiddleware::class,
     ],
-    'AuthController@show' => [
+    'AuthController-show' => [
         AuthMiddleware::class,
     ],
 ];

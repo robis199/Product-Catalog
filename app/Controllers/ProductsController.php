@@ -11,9 +11,11 @@ use App\Storage\TagStorage\TagStorage;
 use App\Redirect;
 use DI\Container;
 use Carbon\Carbon;
+use Twig\Environment;
 
 class ProductsController
 {
+    private Environment $twig;
     private ProductStorage $productStorage;
     private TagStorage $tagStorage;
 
@@ -52,7 +54,6 @@ class ProductsController
             $this->productStorage->getCategoryById($_POST['category']),
             $_POST['created_at'],
             Carbon::now()->toDateTimeString('minute')
-
         );
 
         $this->productStorage->save($product);

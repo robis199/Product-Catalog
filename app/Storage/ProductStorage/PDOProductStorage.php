@@ -25,7 +25,7 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
             $collection = new ProductsCollection();
 
             if (empty($category)) {
-                $stmt = $this->connect()->prepare("SELECT * FROM product_transport WHERE id = ? ORDER BY created_at DESC");
+                $stmt = $this->connect()->prepare('SELECT * FROM product_transport WHERE id = ? ORDER BY created_at DESC');
             } else {
                 $stmt = $this->connect()->prepare('SELECT * FROM product_transport WHERE id = ? AND category = ? ORDER BY created_at DESC');
             }
@@ -54,7 +54,7 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
 
     public function save(Product $product): void
     {
-        $sql = "INSERT INTO product_transport (product_id, make, model, price, category, created_at, updated) VALUES (?, ?, ?, ?,?,?,?)";
+        $sql = 'INSERT INTO product_transport (product_id, make, model, price, category, created_at, updated) VALUES (?, ?, ?, ?,?,?,?)';
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([
             $product->getProductId(),
@@ -69,25 +69,22 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
 
     public function delete(Product $product): void
     {
-        $sql = "DELETE FROM product_transport WHERE product_id = ?";
+        $sql = 'DELETE FROM product_transport WHERE product_id = ?';
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$product->getProductId()]);
     }
 
-
     public function update(string $productId, string $make, string $model, string $price, string $category, string $updated): void
     {
-        $stmt = $this->connect()->query("UPDATE product_transport SET make = ?, model = ?, category = ?, 
-                    price = ?, updated = ? WHERE product_id = ?");
+        $stmt = $this->connect()->query('UPDATE product_transport SET make = ?, model = ?, category = ?, price = ?, updated = ? WHERE product_id = ?');
         $stmt->execute([$productId, $make, $model, $price, $category, $updated]);
     }
-
 
     public function getCategories(): CategoryCollection
     {
         $collection = new CategoryCollection();
 
-        $sql = "SELECT * FROM product_category";
+        $sql = 'SELECT * FROM product_category';
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
 
@@ -105,7 +102,7 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
 
     public function getCategoryById(string $categoryId): ?ProductCategory
     {
-        $sql = "SELECT * FROM product_category WHERE category_id = ?";
+        $sql = 'SELECT * FROM product_category WHERE category_id = ?';
         $statement = $this->connect()->prepare($sql);
         $statement->execute([$categoryId]);
 
@@ -121,7 +118,7 @@ class PDOProductStorage extends DatabaseConnect implements ProductStorage
 
     function getOne(Product $product): ?Product
     {
-        $sql = "SELECT * FROM product_transport WHERE product_id = ?";
+        $sql = 'SELECT * FROM product_transport WHERE product_id = ?';
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$product->getProductId()]);
         $product = $stmt->fetch();

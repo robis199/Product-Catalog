@@ -61,7 +61,7 @@ class PDOTagStorage extends DatabaseConnect implements TagStorage
         $tags = [];
         $collection = new TagsCollection();
 
-        $sql = "SELECT * FROM products_tags WHERE product_id = ?";
+        $sql = 'SELECT * FROM products_tags WHERE product_id = ?';
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute();
 
